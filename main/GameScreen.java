@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -34,25 +33,23 @@ public class GameScreen extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(sprites.get(20), 0, 0, null);
-
-        // Exemple drawing img 320px
-        // g.drawImage(img.getSubimage(32 * 9, 32, 32, 32), 0, 0, null);
-        // --------------------------
-
         for (int y = 0; y < 20; y++) {
             for (int x = 0; x < 20; x++) {
                 g.drawImage(sprites.get(getRndInt()), x * 32, y * 32, null);
             }
         }
 
+        callFPS();
+    }
+
+    private void callFPS() {
         frames++;
+
         if (System.currentTimeMillis() - lastTime >= 1000) {
             System.out.println("FPS: " + frames);
             frames = 0;
             lastTime = System.currentTimeMillis();
         }
-        repaint();
     }
 
     private int getRndInt() {
