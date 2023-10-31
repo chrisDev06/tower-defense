@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -11,13 +12,25 @@ public class GameScreen extends JPanel {
     private Random random;
     private BufferedImage img;
 
+    private Dimension size;
+
     private ArrayList<BufferedImage> sprites = new ArrayList<>();
 
     public GameScreen(BufferedImage img) {
         this.img = img;
 
+        setPanelSize();
+
         loadSprites();
+
         random = new Random();
+    }
+
+    private void setPanelSize() {
+        size = new Dimension(640, 640);
+        setMinimumSize(size);
+        setPreferredSize(size);
+        setMaximumSize(size);
     }
 
     public void loadSprites() {
