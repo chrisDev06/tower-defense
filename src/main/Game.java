@@ -1,4 +1,4 @@
-package main;
+// package src.main;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class Game extends JFrame implements Runnable {
     }
 
     private void importImg() {
-        InputStream is = getClass().getResourceAsStream("../res/spriteatlas.png");
+        InputStream is = getClass().getResourceAsStream("/res/spriteatlas.png");
 
         try {
             img = ImageIO.read(is);
