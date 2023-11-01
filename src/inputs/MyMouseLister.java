@@ -4,7 +4,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import main.Game;
+
 public class MyMouseLister implements MouseListener, MouseMotionListener {
+
+    private Game game;
+
+    public MyMouseLister(Game game) {
+        this.game = game;
+    }
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -16,11 +24,10 @@ public class MyMouseLister implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1)
-            System.out.println("Left button clicked!");
-        else if (e.getButton() == MouseEvent.BUTTON3)
-            System.out.println("Right button clicked!");
 
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            System.out.println("Mouse pos: " + e.getX() + " : " + e.getY());
+        }
     }
 
     @Override

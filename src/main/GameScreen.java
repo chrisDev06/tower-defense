@@ -4,17 +4,33 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+import inputs.KeyboardLister;
+import inputs.MyMouseLister;
+
 public class GameScreen extends JPanel {
 
     private Game game;
     private Dimension size;
 
+    private MyMouseLister myMouseLister;
+    private KeyboardLister KeyboardLister;
+
     public GameScreen(Game game) {
         this.game = game;
-   
 
         setPanelSize();
 
+    }
+
+    public void initInputs() {
+        myMouseLister = new MyMouseLister(game);
+        KeyboardLister = new KeyboardLister();
+
+        addMouseListener(myMouseLister);
+        addMouseMotionListener(myMouseLister);
+        addKeyListener(KeyboardLister);
+
+        requestFocus();
     }
 
     private void setPanelSize() {
