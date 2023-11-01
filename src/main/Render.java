@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+
 public class Render {
 
     private Game game;

@@ -35,7 +35,6 @@ public class Menu extends GameScene implements SceneMethods {
 
     private void importImg() {
         InputStream is = getClass().getResourceAsStream("/res/spriteatlas.png");
-        System.out.println("Chemin de l'image : " + is);
 
         try {
             img = ImageIO.read(is);
