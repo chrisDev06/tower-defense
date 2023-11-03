@@ -18,11 +18,13 @@ public class TileManager {
     }
 
     private void createTiles() {
-        tiles.add(GRASS = new Tile(getSprite(8, 1)));
-        tiles.add(WATER = new Tile(getSprite(0, 6)));
-        tiles.add(ROAD = new Tile(getSprite(9, 0)));
-        tiles.add(GRASSTOP = new Tile(getSprite(5, 0)));
-        tiles.add(GRASSBOT = new Tile(getSprite(1, 0)));
+
+        int id = 0;
+        tiles.add(GRASS = new Tile(getSprite(8, 1), id++, "Grass"));
+        tiles.add(WATER = new Tile(getSprite(0, 6), id++, "WATER"));
+        tiles.add(ROAD = new Tile(getSprite(9, 0), id++, "ROAD"));
+        tiles.add(GRASSTOP = new Tile(getSprite(5, 0), id++, "GRASSTOP"));
+        tiles.add(GRASSBOT = new Tile(getSprite(1, 0), id++, "GRASSBOT"));
 
     }
 

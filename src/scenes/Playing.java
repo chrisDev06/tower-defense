@@ -1,8 +1,6 @@
 
 package scenes;
 
-import static main.GameStates.SetGameState;
-
 import java.awt.Graphics;
 
 import helperMethods.LevelBuild;
@@ -14,7 +12,6 @@ public class Playing extends GameScene implements SceneMethods {
 
     private int[][] lvl;
     private TileManager tileManager;
-
     private BottomBar bottomBar;
 
     public Playing(Game game) {
@@ -22,7 +19,7 @@ public class Playing extends GameScene implements SceneMethods {
 
         lvl = LevelBuild.getLevelData();
         tileManager = new TileManager();
-        bottomBar = new BottomBar(0, 640, 640, 100);
+        bottomBar = new BottomBar(0, 640, 640, 100, this);
 
     }
 
@@ -37,6 +34,10 @@ public class Playing extends GameScene implements SceneMethods {
         }
 
         bottomBar.draw(g);
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
     }
 
     @Override
