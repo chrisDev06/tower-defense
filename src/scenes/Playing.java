@@ -41,18 +41,30 @@ public class Playing extends GameScene implements SceneMethods {
 
     @Override
     public void mouseClicked(int x, int y) {
+        if (y > 640) {
+            bottomBar.mouseClicked(x, y);
+        }
     }
 
     @Override
     public void mouseMoved(int x, int y) {
+        if (y >= 640) {
+            bottomBar.mouseMoved(x, y);
+        }
     }
 
     @Override
     public void mousePressed(int x, int y) {
+        if (y >= 640) {
+            bottomBar.mousePressed(x, y);
+        }
     }
 
     @Override
     public void mouseReleased(int x, int y) {
+        if (y >= 640) {
+            bottomBar.mouseReleased(x, y);
+        }
     }
 
 }

@@ -50,7 +50,7 @@ public class BottomBar {
 
     public void mousePressed(int x, int y) {
         if (bMenu.getBounds().contains(x, y))
-            bMenu.setMouseOver(true);
+            bMenu.setMousePressed(true);
     }
 
     public void mouseReleased(int x, int y) {

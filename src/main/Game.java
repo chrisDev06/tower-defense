@@ -2,8 +2,6 @@ package main;
 
 import javax.swing.JFrame;
 
-import inputs.KeyboardLister;
-import inputs.MyMouseLister;
 import scenes.Menu;
 import scenes.Playing;
 import scenes.Settings;

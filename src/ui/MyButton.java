@@ -54,6 +54,7 @@ public class MyButton {
         else
             g.setColor(Color.WHITE);
         g.fillRect(x, y, width, height);
+        g.setColor(Color.BLUE);
 
     }
 
