@@ -5,6 +5,7 @@ import static main.GameStates.SetGameState;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import objects.Tile;
@@ -38,16 +39,26 @@ public class BottomBar {
 
         int i = 0;
         for (Tile tile : playing.getTileManager().tiles) {
-            tileButtons.add(new MyButton(tile.getName(), xStart + xOffset * i++, yStart , w, h));
+            tileButtons.add(new MyButton(tile.getName(), xStart + xOffset * i, yStart, w, h, i));
+            i++;
         }
     }
 
     private void drawButtons(Graphics g) {
         bMenu.draw(g);
 
+        drawTileButtons(g);
+
+    }
+
+    private void drawTileButtons(Graphics g) {
         for (MyButton b : tileButtons) {
-            b.draw(g);
+            g.drawImage(getButtImg(b.getId()), b.x, b.y, b.width, b.height, null);
         }
+    }
+
+    public BufferedImage getButtImg(int id) {
+        return playing.getTileManager().getSprite(id);
     }
 
     public void draw(Graphics g) {
