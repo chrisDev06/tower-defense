@@ -117,4 +117,10 @@ public class Menu extends GameScene implements SceneMethods {
         bPlaying.resetBooleans();
 
     }
+
+    @Override
+    public void mouseDragged(int x, int y) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
+    }
 }
