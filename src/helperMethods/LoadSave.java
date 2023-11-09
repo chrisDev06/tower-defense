@@ -11,10 +11,11 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
+import objects.PathPoint;
+
 public class LoadSave {
 
     public static BufferedImage getSpriteAtlas() {
-
         BufferedImage img = null;
         InputStream is = LoadSave.class.getClassLoader().getResourceAsStream("spriteatlas.png");
 
@@ -23,16 +24,24 @@ public class LoadSave {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return img;
     }
 
-    // Create a new lvl with default values
+    public static void CreateFile() {
+        File txtFile = new File("res/testTextFile.txt");
+
+        try {
+            txtFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void CreateLevel(String name, int[] idArr) {
         File newLevel = new File("res/" + name + ".txt");
-
         if (newLevel.exists()) {
-            System.out.println("File: " + name + " already exists");
+            System.out.println("File: " + name + " already exists!");
             return;
         } else {
             try {
@@ -40,31 +49,36 @@ public class LoadSave {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            WriteToFile(newLevel, idArr);
+
+            WriteToFile(newLevel, idArr, new PathPoint(0, 0), new PathPoint(0, 0));
         }
+
     }
 
-    private static void WriteToFile(File f, int[] idArr) {
+    private static void WriteToFile(File f, int[] idArr, PathPoint start, PathPoint end) {
         try {
             PrintWriter pw = new PrintWriter(f);
-            for (Integer i : idArr) {
+            for (Integer i : idArr)
                 pw.println(i);
-            }
-            pw.close();
+            pw.println(start.getxCord());
+            pw.println(start.getyCord());
+            pw.println(end.getxCord());
+            pw.println(end.getyCord());
 
-        } catch (IOException e) {
+            pw.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 
-    // Save 2d int array to file
-    public static void SaveLevel(String name, int[][] idArr) {
+    public static void SaveLevel(String name, int[][] idArr, PathPoint start, PathPoint end) {
         File levelFile = new File("res/" + name + ".txt");
 
         if (levelFile.exists()) {
-            WriteToFile(levelFile, Utilz.TowDto1DintArry(idArr));
+            WriteToFile(levelFile, Utilz.TwoDto1DintArr(idArr), start, end);
         } else {
-            System.out.println("File: " + name + " does not exists");
+            System.out.println("File: " + name + " does not exists! ");
             return;
         }
     }
@@ -78,6 +92,9 @@ public class LoadSave {
             while (sc.hasNextLine()) {
                 list.add(Integer.parseInt(sc.nextLine()));
             }
+
+            sc.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -85,7 +102,22 @@ public class LoadSave {
         return list;
     }
 
-    // Load int array from file
+    public static ArrayList<PathPoint> GetLevelPathPoints(String name) {
+        File lvlFile = new File("res/" + name + ".txt");
+
+        if (lvlFile.exists()) {
+            ArrayList<Integer> list = ReadFromFile(lvlFile);
+            ArrayList<PathPoint> points = new ArrayList<>();
+            points.add(new PathPoint(list.get(400), list.get(401)));
+            points.add(new PathPoint(list.get(402), list.get(403)));
+
+            return points;
+
+        } else {
+            System.out.println("File: " + name + " does not exists! ");
+            return null;
+        }
+    }
 
     public static int[][] GetLevelData(String name) {
         File lvlFile = new File("res/" + name + ".txt");
@@ -95,10 +127,9 @@ public class LoadSave {
             return Utilz.ArrayListTo2Dint(list, 20, 20);
 
         } else {
-            System.out.println("File: " + name + " does not exist");
+            System.out.println("File: " + name + " does not exists! ");
             return null;
         }
 
     }
-
 }
