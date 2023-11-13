@@ -90,6 +90,9 @@ public class Editing extends GameScene implements SceneMethods {
 
     private void changeTile(int x, int y) {
         if (selectedTile != null) {
+
+            
+
             int tileX = x / 32;
             int tileY = y / 32;
 
