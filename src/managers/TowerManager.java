@@ -45,6 +45,14 @@ public class TowerManager {
         }
     }
 
+    public Tower getTowerAt(int x, int y) {
+        for (Tower t : towers)
+            if (t.getX() == x)
+                if (t.getY() == y)
+                    return t;
+        return null;
+    }
+
     public BufferedImage[] getTowerImgs() {
         return towerImgs;
     }

@@ -102,13 +102,19 @@ public class Playing extends GameScene implements SceneMethods {
 		if (y >= 640)
 			actionBar.mouseClicked(x, y);
 		else {
-			if (isTileGrass(mouseX, mouseY)) {
-				if (selectedTower != null) {
-					towerManager.addTower(selectedTower, mouseX, mouseY);
-					selectedTower = null;
+			if (selectedTower != null) {
+				if (isTileGrass(mouseX, mouseY)) {
+					if (getTowerAt(mouseX, mouseY) == null) {
+						towerManager.addTower(selectedTower, mouseX, mouseY);
+						selectedTower = null;
+					}
 				}
 			}
 		}
+	}
+
+	private Tower getTowerAt(int x, int y) {
+		return towerManager.getTowerAt(x, y);
 	}
 
 	private boolean isTileGrass(int x, int y) {
