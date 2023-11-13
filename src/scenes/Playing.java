@@ -28,7 +28,7 @@ public class Playing extends GameScene implements SceneMethods {
 		actionBar = new ActionBar(0, 640, 640, 160, this);
 
 		enemyManager = new EnemyManager(this, start, end);
-		towerManager = new TowerManager(null);
+		towerManager = new TowerManager(this);
 	}
 
 	private void loadDefaultLevel() {
@@ -117,6 +117,10 @@ public class Playing extends GameScene implements SceneMethods {
 	@Override
 	public void mouseDragged(int x, int y) {
 
+	}
+
+	public TowerManager getTowerManager() {
+		return towerManager;
 	}
 
 }

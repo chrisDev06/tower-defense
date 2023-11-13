@@ -30,7 +30,7 @@ public class TowerManager {
         BufferedImage atlas = LoadSave.getSpriteAtlas();
         towerImgs = new BufferedImage[3];
         for (int i = 0; i < 3; i++) {
-            towerImgs[i] = atlas.getSubimage((4 + 1) * 32, 32, 32, 32);
+            towerImgs[i] = atlas.getSubimage((4 + i) * 32, 32, 32, 32);
         }
     }
 
@@ -40,5 +40,9 @@ public class TowerManager {
 
     public void draw(Graphics g) {
         g.drawImage(towerImgs[ARCHER], tower.getX(), tower.getY(), null);
+    }
+
+    public BufferedImage[] getTowerImgs() {
+        return towerImgs;
     }
 }
