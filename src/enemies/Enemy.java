@@ -31,9 +31,8 @@ public abstract class Enemy {
 
     public void hurt(int dmg) {
         this.health -= dmg;
-        if (health < 0) {
+        if (health <= 0)
             alive = false;
-        }
     }
 
     public void move(float speed, int dir) {
@@ -52,6 +51,13 @@ public abstract class Enemy {
                 this.y += speed;
                 break;
         }
+
+        updateHitbox();
+    }
+
+    private void updateHitbox() {
+        bounds.x = (int) x;
+        bounds.y = (int) y;
     }
 
     public void setPos(int x, int y) {
@@ -95,4 +101,5 @@ public abstract class Enemy {
     public boolean isAlive() {
         return alive;
     }
+
 }

@@ -6,9 +6,11 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import enemies.Enemy;
 import helperMethods.LoadSave;
 import main.Game;
 import managers.EnemyManager;
+import managers.ProjectileManager;
 import managers.TowerManager;
 import objects.PathPoint;
 import objects.Tower;
@@ -22,6 +24,7 @@ public class Playing extends GameScene implements SceneMethods {
 	private int mouseX, mouseY;
 	private EnemyManager enemyManager;
 	private TowerManager towerManager;
+	private ProjectileManager projManager;
 	private PathPoint start, end;
 	private Tower selectedTower;
 
@@ -31,9 +34,9 @@ public class Playing extends GameScene implements SceneMethods {
 		loadDefaultLevel();
 
 		actionBar = new ActionBar(0, 640, 640, 160, this);
-
 		enemyManager = new EnemyManager(this, start, end);
 		towerManager = new TowerManager(this);
+		projManager = new ProjectileManager(this);
 	}
 
 	private void loadDefaultLevel() {
@@ -51,6 +54,7 @@ public class Playing extends GameScene implements SceneMethods {
 		updateTick();
 		enemyManager.update();
 		towerManager.update();
+		projManager.update();
 	}
 
 	public void setSelectedTower(Tower selectedTower) {
@@ -64,6 +68,8 @@ public class Playing extends GameScene implements SceneMethods {
 		actionBar.draw(g);
 		enemyManager.draw(g);
 		towerManager.draw(g);
+		projManager.draw(g);
+
 		drawSelectedTower(g);
 		drawHighlight(g);
 	}
@@ -174,6 +180,10 @@ public class Playing extends GameScene implements SceneMethods {
 
 	public EnemyManager getEnemyManager() {
 		return enemyManager;
+	}
+
+	public void shootEnemy(Tower t, Enemy e) {
+		projManager.newProjectile(t, e);
 	}
 
 }
