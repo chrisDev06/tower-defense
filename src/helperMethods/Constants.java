@@ -28,6 +28,20 @@ public class Constants {
             }
             return 0;
         }
+
+        public static int GetStartHealth(int enemyType) {
+            switch (enemyType) {
+                case ORC:
+                    return 100;
+                case BAT:
+                    return 60;
+                case KNIGHT:
+                    return 250;
+                case WOLF:
+                    return 85;
+            }
+            return 0;
+        }
     }
 
     public static class Tiles {
@@ -49,9 +63,45 @@ public class Constants {
                     return "ARCHER";
                 case WIZARD:
                     return "WIZARD";
-
             }
             return "";
+        }
+
+        public static float GetStartDmg(int towerType) {
+            switch (towerType) {
+                case CANNON:
+                    return 25;
+                case ARCHER:
+                    return 15;
+                case WIZARD:
+                    return 5;
+            }
+            return 0;
+        }
+
+        public static float GetDefaultRange(int towerType) {
+            switch (towerType) {
+                case CANNON:
+                    return 150;
+                case ARCHER:
+                    return 200;
+                case WIZARD:
+                    return 400;
+
+            }
+            return 0;
+        }
+
+        public static float GetDefaultCooldown(int towerType) {
+            switch (towerType) {
+                case CANNON:
+                    return 10;
+                case ARCHER:
+                    return 10;
+                case WIZARD:
+                    return 30;
+            }
+            return 0;
         }
     }
 
