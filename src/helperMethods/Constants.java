@@ -53,11 +53,11 @@ public class Constants {
         public static float GetDefaultRange(int towerType) {
             switch (towerType) {
                 case CANNON:
-                    return 100;
+                    return 500;
                 case ARCHER:
                     return 100;
                 case WIZARD:
-                    return 400;
+                    return 100;
             }
 
             return 0;
@@ -70,7 +70,7 @@ public class Constants {
                 case ARCHER:
                     return 10;
                 case WIZARD:
-                    return 50;
+                    return 10;
             }
 
             return 0;
