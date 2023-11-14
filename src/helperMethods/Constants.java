@@ -10,11 +10,11 @@ public class Constants {
         public static float GetSpeed(int type) {
             switch (type) {
                 case ARROW:
-                    return 3f;
+                    return 5f;
                 case BOMB:
-                    return 1f;
+                    return 3f;
                 case CHAINS:
-                    return 2f;
+                    return 3f;
             }
             return 0f;
         }
@@ -42,7 +42,7 @@ public class Constants {
                 case CANNON:
                     return 25;
                 case ARCHER:
-                    return 15;
+                    return 1;
                 case WIZARD:
                     return 5;
             }
