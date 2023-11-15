@@ -73,7 +73,8 @@ public class ProjectileManager {
 				rotate += 180;
 		}
 
-		projectiles.add(new Projectile(t.getX() + 16, t.getY() + 16, xSpeed, ySpeed, t.getDmg(), rotate, proj_id++, type));
+		projectiles
+				.add(new Projectile(t.getX() + 16, t.getY() + 16, xSpeed, ySpeed, t.getDmg(), rotate, proj_id++, type));
 
 	}
 
@@ -120,6 +121,9 @@ public class ProjectileManager {
 			if (e.isAlive())
 				if (e.getBounds().contains(p.getPos())) {
 					e.hurt(p.getDmg());
+					if (p.getProjectileType() == CHAINS) {
+						e.slow();
+					}
 					return true;
 				}
 		}
@@ -138,7 +142,8 @@ public class ProjectileManager {
 					g2d.rotate(-Math.toRadians(p.getRotation()));
 					g2d.translate(-p.getPos().x, -p.getPos().y);
 				} else {
-					g2d.drawImage(proj_imgs[p.getProjectileType()], (int) p.getPos().x - 16, (int) p.getPos().y - 16, null);
+					g2d.drawImage(proj_imgs[p.getProjectileType()], (int) p.getPos().x - 16, (int) p.getPos().y - 16,
+							null);
 				}
 			}
 
@@ -154,12 +159,12 @@ public class ProjectileManager {
 
 	private int getProjType(Tower t) {
 		switch (t.getTowerType()) {
-		case ARCHER:
-			return ARROW;
-		case CANNON:
-			return BOMB;
-		case WIZARD:
-			return CHAINS;
+			case ARCHER:
+				return ARROW;
+			case CANNON:
+				return BOMB;
+			case WIZARD:
+				return CHAINS;
 		}
 		return 0;
 	}
