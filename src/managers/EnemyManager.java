@@ -35,10 +35,10 @@ public class EnemyManager {
 
         loadEffectImg();
 
-        addEnemy(ORC);
-        addEnemy(BAT);
-        addEnemy(KNIGHT);
-        addEnemy(WOLF);
+        // addEnemy(ORC);
+        // addEnemy(BAT);
+        // addEnemy(KNIGHT);
+        // addEnemy(WOLF);
 
         loadEnemyImgs();
     }
@@ -55,10 +55,36 @@ public class EnemyManager {
     }
 
     public void update() {
+
+        updateWaveManager();
+
+        if (isTimeForNewEnemy()) {
+            spawnEnemy();
+        }
+
         for (Enemy e : enemies)
             if (e.isAlive()) {
                 updateEnemyMove(e);
             }
+    }
+
+    private void updateWaveManager() {
+        playing.getWaveManager().update();
+    }
+
+    private void spawnEnemy() {
+        addEnemy(playing.getWaveManager().getNextEnemy());
+    }
+
+    private boolean isTimeForNewEnemy() {
+
+        if (playing.getWaveManager().isTimeForNewEnemy()) {
+            if (playing.getWaveManager().isTimeForNewEnemy()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void updateEnemyMove(Enemy e) {
