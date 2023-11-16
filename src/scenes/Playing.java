@@ -55,9 +55,30 @@ public class Playing extends GameScene implements SceneMethods {
 
 	public void update() {
 		updateTick();
+		waveManager.update();
+
+		if (isTimeForNewEnemy()) {
+			spawnEnemy();
+		}
+
 		enemyManager.update();
 		towerManager.update();
 		projManager.update();
+	}
+
+	private void spawnEnemy() {
+		enemyManager.spawnEnemy(waveManager.getNextEnemy());
+	}
+
+	private boolean isTimeForNewEnemy() {
+
+		if (waveManager.isTimeForNewEnemy()) {
+			if (waveManager.isTimeForNewEnemy()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public void setSelectedTower(Tower selectedTower) {
@@ -178,7 +199,7 @@ public class Playing extends GameScene implements SceneMethods {
 
 	@Override
 	public void mouseDragged(int x, int y) {
-		
+
 	}
 
 	public TowerManager getTowerManager() {

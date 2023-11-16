@@ -36,7 +36,7 @@ public class WaveManager {
     }
 
     private void createWaves() {
-        waves.add(new Wave(new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 0, 1, 2, 3))));
+        waves.add(new Wave(new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 0, 1, 2, 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1))));
     }
 
     public ArrayList<Wave> getWaves() {
@@ -50,6 +50,6 @@ public class WaveManager {
     public boolean isThereMoreEnemiesInWave() {
         return enemyIndex < waves.get(waveIndex).getEnemyList().size();
 
-    }
+    }   
 
 }
